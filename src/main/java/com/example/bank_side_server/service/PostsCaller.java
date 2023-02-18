@@ -5,5 +5,5 @@ import retrofit2.http.Header;
 
 public interface PostsCaller {
 //    FirmInqBeneRepLayer getBeneficiary(@Header("content-type") String contentType, String body);
-    void getBeneficiary(@Header("content-type") String contentType, String body);
+    FirmInqBeneRepLayer getBeneficiary(@Header("content-type") String contentType, String body);
 }

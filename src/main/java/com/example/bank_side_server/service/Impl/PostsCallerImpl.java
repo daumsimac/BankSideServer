@@ -19,17 +19,15 @@ public class PostsCallerImpl implements PostsCaller {
     @Autowired
     private final PostsAPI postsAPI;
 
-    private static final String CONTENT_TYPE = "application/json";
+    @Override
+    public FirmInqBeneRepLayer getBeneficiary(@Header("content-type") String contentType, String body) {
+        Call<FirmInqBeneRepLayer> call = postsAPI.getBeneficiary(contentType, body);
+        return retrofitUtils.execute(call);
+    }
 
 //    @Override
-//    public FirmInqBeneRepLayer getBeneficiary(@Header("content-type") String contentType, String body) {
-//        Call<FirmInqBeneRepLayer> call = postsAPI.getBeneficiary(CONTENT_TYPE, body);
-//        return retrofitUtils.execute(call);
+//    public void getBeneficiary(@Header("content-type") String contentType, String body) {
+//        System.out.println(contentType + " : " + body);;
 //    }
-
-    @Override
-    public void getBeneficiary(@Header("content-type") String contentType, String body) {
-        System.out.println(contentType + " : " + body);;
-    }
 
 }

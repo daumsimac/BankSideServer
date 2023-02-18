@@ -3,6 +3,12 @@ package com.example.bank_side_server.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ROOT")
+@XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 @Setter
 public class FirmInqBeneReqLayer {
