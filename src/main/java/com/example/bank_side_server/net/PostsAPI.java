@@ -1,6 +1,7 @@
 package com.example.bank_side_server.net;
 
 import com.example.bank_side_server.model.FirmInqBeneRepLayer;
+import com.example.bank_side_server.model.FundTransRepLayout;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -12,57 +13,57 @@ public interface PostsAPI {
     Call<FirmInqBeneRepLayer> getBeneficiary(@Header("content-type")String contentType , @Body String body);
 
     @POST("/bidv/v1/fundTransfer")
-    Call<FirmInqBeneRepLayer> getFundTransfer(@Body String body);
+    Call<FundTransRepLayout> getFundTransfer(@Body String body, String s);
 
     @POST("/bidv/v1/investigate")
-    Call<FirmInqBeneRepLayer> getInvestigate(@Body String body);
+    Call<?> getInvestigate(@Body String body);
 
     @POST("/bidv/v1/requestOTP")
-    Call<FirmInqBeneRepLayer> getRequestOTP(@Body String body);
+    Call<?> getRequestOTP(@Body String body);
 
     @POST("/bidv/v1/convertCardNumberToId")
-    Call<FirmInqBeneRepLayer> getConvertCardNumberToId(@Body String body);
+    Call<?> getConvertCardNumberToId(@Body String body);
 
     @POST("/bidv/v1/getBankList")
-    Call<FirmInqBeneRepLayer> getBankList(@Body String body);
+    Call<?> getBankList(@Body String body);
 
     @POST("/bidv/v1/getToken")
-    Call<FirmInqBeneRepLayer> getToken(@Body String body);
+    Call<?> getToken(@Body String body);
 
     @POST("/bidv/v1/walletLink")
-    Call<FirmInqBeneRepLayer> getWalletLink(@Body String body);
+    Call<?> getWalletLink(@Body String body);
 
     @POST("/bidv/v1/walletInformation")
-    Call<FirmInqBeneRepLayer> getWalletInformation(@Body String body);
+    Call<?> getWalletInformation(@Body String body);
 
     @POST("/bidv/v1/cancelConnection")
-    Call<FirmInqBeneRepLayer> getCancelConnection(@Body String body);
+    Call<?> getCancelConnection(@Body String body);
 
     @POST("/bidv/v1/cashOut")
-    Call<FirmInqBeneRepLayer> getCashOut(@Body String body);
+    Call<?> getCashOut(@Body String body);
 
     @POST("/bidv/v1/cashIn")
-    Call<FirmInqBeneRepLayer> getCashIn(@Body String body);
+    Call<?> getCashIn(@Body String body);
 
     @POST("/bidv/v1/inquiryBalance")
-    Call<FirmInqBeneRepLayer> getInquiryBalance(@Body String body);
+    Call<?> getInquiryBalance(@Body String body);
 
     @POST("/bidv/v1/payment")
-    Call<FirmInqBeneRepLayer> getPayment(@Body String body);
+    Call<?> getPayment(@Body String body);
 
     @POST("/bidv/v1/refundForOriginalTransaction")
-    Call<FirmInqBeneRepLayer> getRefundForOriginalTransaction(@Body String body);
+    Call<?> getRefundForOriginalTransaction(@Body String body);
 
     @POST("/bidv/v1/upgradeTransactionLimit")
-    Call<FirmInqBeneRepLayer> getUpgradeTransactionLimit(@Body String body);
+    Call<?> getUpgradeTransactionLimit(@Body String body);
 
     @POST("/bidv/v1/verifyWalletOwner")
-    Call<FirmInqBeneRepLayer> getVerifyWalletOwner(@Body String body);
+    Call<?> getVerifyWalletOwner(@Body String body);
 
     @POST("/bidv/v1/verifyIdCard")
-    Call<FirmInqBeneRepLayer> getVerifyIdCard(@Body String body);
+    Call<?> getVerifyIdCard(@Body String body);
 
     @POST("/bidv/v1/inquiryAccount")
-    Call<FirmInqBeneRepLayer> getInquiryAccount(@Body String body);
+    Call<?> getInquiryAccount(@Body String body);
 
 }

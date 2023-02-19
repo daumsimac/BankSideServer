@@ -1,6 +1,7 @@
 package com.example.bank_side_server.service.Impl;
 
 import com.example.bank_side_server.model.FirmInqBeneRepLayer;
+import com.example.bank_side_server.model.FundTransRepLayout;
 import com.example.bank_side_server.net.PostsAPI;
 import com.example.bank_side_server.service.PostsCaller;
 import com.example.bank_side_server.util.RetrofitUtils;
@@ -25,7 +26,13 @@ public class PostsCallerImpl implements PostsCaller {
         return retrofitUtils.execute(call);
     }
 
-//    @Override
+    @Override
+    public FundTransRepLayout getFundTransfer(@Header("content-type") String contentType, String body) {
+        Call<FundTransRepLayout> call = postsAPI.getFundTransfer(contentType, body);
+        return retrofitUtils.execute(call);
+    }
+
+    //    @Override
 //    public void getBeneficiary(@Header("content-type") String contentType, String body) {
 //        System.out.println(contentType + " : " + body);;
 //    }

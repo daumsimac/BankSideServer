@@ -3,6 +3,8 @@ package com.example.bank_side_server.controller;
 import com.example.bank_side_server.constants.ApiRestURIConstants;
 import com.example.bank_side_server.model.FirmInqBeneRepLayer;
 import com.example.bank_side_server.model.FirmInqBeneReqLayer;
+import com.example.bank_side_server.model.FundTransRepLayout;
+import com.example.bank_side_server.model.FundTransReqLayout;
 import com.example.bank_side_server.service.BankSideService;
 import com.example.bank_side_server.validate.ApiReqInqBeneValidate;
 import org.slf4j.Logger;
@@ -71,6 +73,52 @@ public class BankSideController {
             return ResponseEntity.status(rep.getStatus()).
                     header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE).body(rep);
         }
+
+        return ResponseEntity.status(HttpStatus.OK).
+                header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE).body(rep);
+    }
+
+    /**
+     * 송금 api 요청
+     *
+     * @return JSON
+     */
+    @RequestMapping(value = ApiRestURIConstants.FUND_TRANSFER, method = RequestMethod.POST)
+    public @ResponseBody ResponseEntity<?> transferFund(@RequestBody FundTransReqLayout req, BindingResult bindingResult) throws Exception {
+        FundTransRepLayout rep = null;
+
+//        try {
+//            apiReqInqBeneValidate.validate(req, bindingResult);
+
+//            if (bindingResult.hasErrors()) {
+//                FieldError error = bindingResult.getFieldError();
+//
+//                this.logger.error(req.toString() + "[" + error.getDefaultMessage() + "]");
+//
+//                rep = new FundTransRepLayout();
+//
+//                rep.setStatus(400);
+//                rep.setBusinessErrorCode(error.getCode());
+//                rep.setBusinessErrorDesc(error.getDefaultMessage());
+//
+//                return ResponseEntity.status(400).
+//                        header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE).body(rep);
+//            }
+
+            rep = this.bankSideService.execFundTransfer(req);
+//        } catch (Exception e) {
+//            this.logger.error("OrgApiController error.", e);
+//
+//            //시스템 에러
+//            rep = new FundTransRepLayout();
+//
+//            rep.setStatus(500);
+//            rep.setBusinessErrorCode("9999");
+//            rep.setBusinessErrorDesc("서버에러");
+
+//            return ResponseEntity.status(rep.getStatus()).
+//                    header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE).body(rep);
+//        }
 
         return ResponseEntity.status(HttpStatus.OK).
                 header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE).body(rep);
