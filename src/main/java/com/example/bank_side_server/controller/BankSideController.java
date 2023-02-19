@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -35,10 +36,10 @@ public class BankSideController {
      * @return JSON
      */
     @RequestMapping(value = ApiRestURIConstants.INQUIRE_BENE_URI, method = RequestMethod.POST)
-    public @ResponseBody ResponseEntity<?> inquire(@RequestBody FirmInqBeneReqLayer req, BindingResult bindingResult){
+    public @ResponseBody ResponseEntity<?> inquire(@RequestBody FirmInqBeneReqLayer req, BindingResult bindingResult) {
         FirmInqBeneRepLayer rep = null;
 
-        try{
+        try {
             apiReqInqBeneValidate.validate(req, bindingResult);
 
             if (bindingResult.hasErrors()) {
@@ -57,7 +58,7 @@ public class BankSideController {
             }
 
             rep = this.bankSideService.execInquireBeneficiary(req);
-        }catch (Exception e) {
+        } catch (Exception e) {
             this.logger.error("OrgApiController error.", e);
 
             //시스템 에러
@@ -67,10 +68,12 @@ public class BankSideController {
             rep.setBusinessErrorCode("9999");
             rep.setBusinessErrorDesc("서버에러");
 
-            return ResponseEntity.status(500).
+            return ResponseEntity.status(rep.getStatus()).
                     header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE).body(rep);
         }
-        return ResponseEntity.status(rep.getStatus()).
+
+        return ResponseEntity.status(HttpStatus.OK).
                 header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE).body(rep);
     }
+
 }
