@@ -28,6 +28,7 @@ public class PostsCallerImpl implements PostsCaller {
 
     @Override
     public FundTransRepLayout getFundTransfer(@Header("content-type") String contentType, String body) {
+        System.out.println(body.toString());
         Call<FundTransRepLayout> call = postsAPI.getFundTransfer(contentType, body);
         return retrofitUtils.execute(call);
     }

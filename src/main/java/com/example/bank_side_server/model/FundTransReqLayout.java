@@ -1,5 +1,6 @@
 package com.example.bank_side_server.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -14,6 +15,7 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class FundTransReqLayout {
 
     private String clientMessageId;
@@ -40,7 +42,8 @@ public class FundTransReqLayout {
     private String walletId;
     private String feeInclYn;
     private String processedRecord;
-    private List<FundTransReqLayout> tr_infos;
+    private List<Tr_Info_Req> tr_info;
+//    private Tr_Info_Req tr_info;
 
     @SuppressWarnings("static-access")
     public String toString(){

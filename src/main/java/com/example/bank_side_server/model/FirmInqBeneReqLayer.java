@@ -1,5 +1,6 @@
 package com.example.bank_side_server.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class FirmInqBeneReqLayer {
 
     private String clientMessageId;

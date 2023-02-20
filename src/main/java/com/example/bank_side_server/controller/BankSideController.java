@@ -105,6 +105,7 @@ public class BankSideController {
 //                        header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE).body(rep);
 //            }
 
+        this.logger.info(req.toString());
             rep = this.bankSideService.execFundTransfer(req);
 //        } catch (Exception e) {
 //            this.logger.error("OrgApiController error.", e);

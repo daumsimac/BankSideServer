@@ -13,7 +13,7 @@ public interface PostsAPI {
     Call<FirmInqBeneRepLayer> getBeneficiary(@Header("content-type")String contentType , @Body String body);
 
     @POST("/bidv/v1/fundTransfer")
-    Call<FundTransRepLayout> getFundTransfer(@Body String body, String s);
+    Call<FundTransRepLayout> getFundTransfer(@Header("content-type")String contentType , @Body String body);
 
     @POST("/bidv/v1/investigate")
     Call<?> getInvestigate(@Body String body);

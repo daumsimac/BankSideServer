@@ -1,5 +1,6 @@
 package com.example.bank_side_server.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class FundTransRepLayout {
 
     private String clientMessageId;
@@ -24,7 +26,7 @@ public class FundTransRepLayout {
     private String responseTxnCode;
     private String processedRecord;
     private int status;
-    private List<FundTransTrInfoRepLayout> tr_infos;
+    private List<Tr_Info_Rep> tr_infos;
 
     @SuppressWarnings("static-access")
     public String toString(){
