@@ -39,6 +39,7 @@ public class MapperRegistry {
         OkHttpClient client = new OkHttpClient.Builder().connectionPool(connectionPool)
                 //서버로 요청하는데 걸리는 시간을 제한 (20초 이내에 서버에 요청이 성공해야 한다. (handshakre))
                 .connectTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(1,TimeUnit.MINUTES)
                 //서버로 요청을 성공했고, 응답데이터를 받는데 시간을 제한한다.(15초 이내로 응답 데이터를 받아야한다.)
                 .addInterceptor(loggingIntercepter)
                 .build();
